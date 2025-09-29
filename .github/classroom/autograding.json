@@ -1,0 +1,55 @@
+{
+  "tests": [
+    { "name": "Acesso - get_retornaElemento", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#get_retornaElemento", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Acesso - get_invalido_lancaExcecao", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#get_invalido_lancaExcecao", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Acesso - get_suportaNull", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#get_suportaNull", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Acesso - size_listaVazia", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#size_listaVazia", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Acesso - size_refleteNumElements", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#size_refleteNumElements", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Acesso - size_naoCapacidade", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#size_naoCapacidade", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Acesso - isEmpty_trueQuandoZero", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#isEmpty_trueQuandoZero", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Acesso - isEmpty_falseQuandoTemElemento", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#isEmpty_falseQuandoTemElemento", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Acesso - isEmpty_independeDaCapacidade", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoAcessoTest#isEmpty_independeDaCapacidade", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Consulta - contains_true", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#contains_true", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Consulta - contains_false", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#contains_false", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Consulta - contains_null", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#contains_null", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Consulta - indexOf_primeiraOcorrencia", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#indexOf_primeiraOcorrencia", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Consulta - indexOf_naoEncontrado", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#indexOf_naoEncontrado", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Consulta - indexOf_null", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#indexOf_null", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Consulta - lastIndexOf_ultimaOcorrencia", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#lastIndexOf_ultimaOcorrencia", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Consulta - lastIndexOf_naoEncontrado", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#lastIndexOf_naoEncontrado", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Consulta - lastIndexOf_null", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoConsultaTest#lastIndexOf_null", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Inserção/Atualização - add_insereNoFinal_quandoHaEspaco", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#add_insereNoFinal_quandoHaEspaco", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - add_fazResizeCapacidadeDobraEPreservaOrdem", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#add_fazResizeCapacidadeDobraEPreservaOrdem", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - add_aceitaNull", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#add_aceitaNull", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Inserção/Atualização - addIndex_insereNoMeio_deslocaParaDireita", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#addIndex_insereNoMeio_deslocaParaDireita", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - addIndex_insereNoFim_quandoIndexIgualTamanho", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#addIndex_insereNoFim_quandoIndexIgualTamanho", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - addIndex_invalido_lancaExcecao", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#addIndex_invalido_lancaExcecao", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Inserção/Atualização - addAll_insereTodos_quandoOrigemNaoVazia", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#addAll_insereTodos_quandoOrigemNaoVazia", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - addAll_origemVazia_retornaFalse", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#addAll_origemVazia_retornaFalse", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - addAll_variosResizes_mantemOrdem", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#addAll_variosResizes_mantemOrdem", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Inserção/Atualização - set_substituiERetornaAntigo", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#set_substituiERetornaAntigo", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - set_aceitaNull", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#set_aceitaNull", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Inserção/Atualização - set_invalido_lancaExcecao", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoInsercaoAtualizacaoTest#set_invalido_lancaExcecao", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Remoção - removeIndex_doMeio_desloca", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#removeIndex_doMeio_desloca", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Remoção - removeIndex_primeiro", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#removeIndex_primeiro", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Remoção - removeIndex_invalido", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#removeIndex_invalido", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Remoção - removeElemento_primeiraOcorrencia", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#removeElemento_primeiraOcorrencia", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Remoção - removeElemento_inexistente_false", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#removeElemento_inexistente_false", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Remoção - removeElemento_null", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#removeElemento_null", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+
+    { "name": "Remoção - clear_zeraTamanho_mantemCapacidade", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#clear_zeraTamanho_mantemCapacidade", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Remoção - clear_permiteReusoArray", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#clear_permiteReusoArray", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 },
+    { "name": "Remoção - clear_idempotente", "setup": "", "run": "mvn test -DargLine=\"-Dfile.encoding=UTF-8\" -Dtest=\\school.sptech.ListaTextoRemocaoTest#clear_idempotente", "input": "", "output": "", "comparison": "exact", "timeout": 10, "points": 1 }
+  ]
+}
