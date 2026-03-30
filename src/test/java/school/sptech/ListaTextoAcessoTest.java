@@ -2,16 +2,20 @@ package school.sptech;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static school.sptech.TestReflectionUtils.*;
 
+@DisplayName("ListaTexto — Acesso")
 class ListaTextoAcessoTest {
 
-    // -------- get(int) --------
+    // ========================
+    // get(int)
+    // ========================
 
     @Test
-    @DisplayName("get: retorna elemento existente pelo índice")
-    void get_retornaElemento() {
+    @DisplayName("get — índice válido — retorna o elemento armazenado naquela posição")
+    void get_indiceValido_retornaElementoCorreto() {
         var lista = new ListaTexto();
         var arr = newArray(4);
         arr[0] = "A"; arr[1] = "B";
@@ -22,19 +26,24 @@ class ListaTextoAcessoTest {
     }
 
     @Test
-    @DisplayName("get: index inválido (<0 ou >=numElements) -> lança exceção")
-    void get_invalido_lancaExcecao() {
+    @DisplayName("get — índice negativo ou >= size — lança IndexOutOfBoundsException")
+    void get_indiceInvalido_lancaIndexOutOfBoundsException() {
         var lista = new ListaTexto();
         preload(lista, newArray(4), 0);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> lista.get(0));
+        assertThrows(IndexOutOfBoundsException.class, () -> lista.get(0),
+                "lista vazia: índice 0 é inválido");
+
         preload(lista, newArray(4), 1);
-        assertThrows(IndexOutOfBoundsException.class, () -> lista.get(1));
+        assertThrows(IndexOutOfBoundsException.class, () -> lista.get(1),
+                "índice == size() é inválido");
+        assertThrows(IndexOutOfBoundsException.class, () -> lista.get(-1),
+                "índice negativo é inválido");
     }
 
     @Test
-    @DisplayName("get: permite recuperar null quando armazenado")
-    void get_suportaNull() {
+    @DisplayName("get — elemento null armazenado — retorna null sem lançar exceção")
+    void get_elementoNullArmazenado_retornaNullSemExcecao() {
         var lista = new ListaTexto();
         var arr = newArray(4);
         arr[0] = null;
@@ -43,56 +52,66 @@ class ListaTextoAcessoTest {
         assertNull(lista.get(0));
     }
 
-    // -------- size() --------
+    // ========================
+    // size()
+    // ========================
 
     @Test
-    @DisplayName("size: retorna 0 em lista vazia (sem depender de add)")
-    void size_listaVazia() {
+    @DisplayName("size — lista vazia — retorna 0")
+    void size_listaVazia_retornaZero() {
         var lista = new ListaTexto();
         preload(lista, newArray(4), 0);
+
         assertEquals(0, lista.size());
     }
 
     @Test
-    @DisplayName("size: reflete numElements configurado por reflection")
-    void size_refleteNumElements() {
+    @DisplayName("size — lista com elementos — retorna a quantidade correta")
+    void size_numElementsConfigurado_retornaNumElements() {
         var lista = new ListaTexto();
         preload(lista, newArray(10), 7);
+
         assertEquals(7, lista.size());
     }
 
     @Test
-    @DisplayName("size: não deve retornar a capacidade (elements.length)")
-    void size_naoCapacidade() {
+    @DisplayName("size — lista com menos elementos que a capacidade — retorna a quantidade de elementos, não a capacidade")
+    void size_capacidadeMaiorQueNumElements_naoRetornaCapacidade() {
         var lista = new ListaTexto();
         preload(lista, newArray(10), 3);
-        assertNotEquals(elements(lista).length, lista.size(),
-                "size deve refletir quantidade usada, não a capacidade");
+
+        assertEquals(3, lista.size());
+        assertNotEquals(10, lista.size());
     }
 
-    // -------- isEmpty() --------
+    // ========================
+    // isEmpty()
+    // ========================
 
     @Test
-    @DisplayName("isEmpty: true quando numElements == 0")
-    void isEmpty_trueQuandoZero() {
+    @DisplayName("isEmpty — lista vazia — retorna true")
+    void isEmpty_numElementsZero_retornaTrue() {
         var lista = new ListaTexto();
         preload(lista, newArray(4), 0);
+
         assertTrue(lista.isEmpty());
     }
 
     @Test
-    @DisplayName("isEmpty: false quando numElements > 0")
-    void isEmpty_falseQuandoTemElemento() {
+    @DisplayName("isEmpty — lista com elementos — retorna false")
+    void isEmpty_numElementsMaiorQueZero_retornaFalse() {
         var lista = new ListaTexto();
         preload(lista, newArray(4), 1);
+
         assertFalse(lista.isEmpty());
     }
 
     @Test
-    @DisplayName("isEmpty: independe da capacidade do array")
-    void isEmpty_independeDaCapacidade() {
+    @DisplayName("isEmpty — lista vazia com grande capacidade alocada — retorna true")
+    void isEmpty_grandeCapacidadeComNumElementsZero_retornaTrue() {
         var lista = new ListaTexto();
         preload(lista, newArray(100), 0);
+
         assertTrue(lista.isEmpty());
     }
 }
