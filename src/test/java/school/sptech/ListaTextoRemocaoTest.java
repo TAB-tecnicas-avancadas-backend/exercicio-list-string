@@ -2,23 +2,28 @@ package school.sptech;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static school.sptech.TestReflectionUtils.*;
 
+@DisplayName("ListaTexto — Remoção")
 class ListaTextoRemocaoTest {
 
-    // -------- remove(int) --------
+    // ========================
+    // remove(int)
+    // ========================
 
     @Test
-    @DisplayName("remove(index): remove do meio, retorna valor e desloca à esquerda")
-    void removeIndex_doMeio_desloca() {
+    @DisplayName("remove(int) — índice no meio — retorna o elemento e demais permanecem em ordem")
+    void removeIndexado_indiceNoMeio_retornaElementoEDemaisEmOrdem() {
         var lista = new ListaTexto();
         var arr = newArray(6);
-        arr[0]="A"; arr[1]="B"; arr[2]="C"; arr[3]="D"; arr[4]="E";
+        arr[0] = "A"; arr[1] = "B"; arr[2] = "C"; arr[3] = "D"; arr[4] = "E";
         preload(lista, arr, 5);
 
-        String removed = lista.remove(2);
-        assertEquals("C", removed);
+        String removido = lista.remove(2);
+
+        assertEquals("C", removido);
         assertEquals(4, numElements(lista));
         String[] a = elements(lista);
         assertEquals("A", a[0]); assertEquals("B", a[1]);
@@ -26,117 +31,142 @@ class ListaTextoRemocaoTest {
     }
 
     @Test
-    @DisplayName("remove(index): index 0 remove o primeiro e puxa todos")
-    void removeIndex_primeiro() {
+    @DisplayName("remove(int) — índice 0 — retorna o primeiro elemento e demais permanecem em ordem")
+    void removeIndexado_indicePrimeiro_retornaPrimeiroEDemaisEmOrdem() {
         var lista = new ListaTexto();
         var arr = newArray(5);
-        arr[0]="A"; arr[1]="B"; arr[2]="C";
+        arr[0] = "A"; arr[1] = "B"; arr[2] = "C";
         preload(lista, arr, 3);
 
-        String removed = lista.remove(0);
-        assertEquals("A", removed);
+        String removido = lista.remove(0);
+
+        assertEquals("A", removido);
         assertEquals(2, numElements(lista));
         assertEquals("B", elements(lista)[0]);
         assertEquals("C", elements(lista)[1]);
     }
 
     @Test
-    @DisplayName("remove(index): index inválido -> lança exceção")
-    void removeIndex_invalido() {
+    @DisplayName("remove(int) — último índice válido — retorna o elemento e tamanho decrementado")
+    void removeIndexado_indiceUltimo_retornaElementoETamanhoDecrementado() {
+        var lista = new ListaTexto();
+        var arr = newArray(4);
+        arr[0] = "A"; arr[1] = "B"; arr[2] = "C";
+        preload(lista, arr, 3);
+
+        String removido = lista.remove(2);
+
+        assertEquals("C", removido);
+        assertEquals(2, numElements(lista));
+        assertNull(elements(lista)[2]);
+    }
+
+    @Test
+    @DisplayName("remove(int) — índice fora do intervalo [0, size) — lança IndexOutOfBoundsException")
+    void removeIndexado_indiceInvalido_lancaIndexOutOfBoundsException() {
         var lista = new ListaTexto();
         preload(lista, newArray(4), 0);
 
         assertThrows(IndexOutOfBoundsException.class, () -> lista.remove(0));
+
         preload(lista, newArray(4), 2);
         assertThrows(IndexOutOfBoundsException.class, () -> lista.remove(2));
         assertThrows(IndexOutOfBoundsException.class, () -> lista.remove(-1));
     }
 
-    // -------- remove(String) --------
+    // ========================
+    // remove(String)
+    // ========================
 
     @Test
-    @DisplayName("remove(element): remove primeira ocorrência e desloca à esquerda")
-    void removeElemento_primeiraOcorrencia() {
+    @DisplayName("remove(String) — elemento com duplicata — remove somente a primeira ocorrência")
+    void removeElemento_comDuplicata_removeSomentePrimeiraOcorrencia() {
         var lista = new ListaTexto();
         var arr = newArray(6);
-        arr[0]="A"; arr[1]="B"; arr[2]="X"; arr[3]="X"; arr[4]="C";
+        arr[0] = "A"; arr[1] = "B"; arr[2] = "X"; arr[3] = "X"; arr[4] = "C";
         preload(lista, arr, 5);
 
         assertTrue(lista.remove("X"));
+
         assertEquals(4, numElements(lista));
         String[] a = elements(lista);
         assertEquals("A", a[0]); assertEquals("B", a[1]);
-        assertEquals("X", a[2]); // segunda X virou a primeira
+        assertEquals("X", a[2]);
         assertEquals("C", a[3]);
     }
 
     @Test
-    @DisplayName("remove(element): elemento inexistente -> retorna false e não altera estrutura")
-    void removeElemento_inexistente_false() {
+    @DisplayName("remove(String) — elemento inexistente — retorna false e lista inalterada")
+    void removeElemento_inexistente_retornaFalseEListaInalterada() {
         var lista = new ListaTexto();
         var arr = newArray(4);
-        arr[0]="A"; arr[1]="B";
+        arr[0] = "A"; arr[1] = "B";
         preload(lista, arr, 2);
 
         assertFalse(lista.remove("Z"));
+
         assertEquals(2, numElements(lista));
         assertEquals("A", elements(lista)[0]);
         assertEquals("B", elements(lista)[1]);
     }
 
     @Test
-    @DisplayName("remove(element): aceita null e remove quando presente")
-    void removeElemento_null() {
+    @DisplayName("remove(String) — null presente com duplicata — remove somente a primeira ocorrência de null")
+    void removeElemento_nullComDuplicata_removeSomeitePrimeiraOcorrencia() {
         var lista = new ListaTexto();
         var arr = newArray(5);
-        arr[0]=null; arr[1]="A"; arr[2]=null;
+        arr[0] = null; arr[1] = "A"; arr[2] = null;
         preload(lista, arr, 3);
 
         assertTrue(lista.remove(null));
+
         assertEquals(2, numElements(lista));
         assertEquals("A", elements(lista)[0]);
-        assertNull(elements(lista)[1]); // o null da posição 2 moveu pra 1
+        assertNull(elements(lista)[1]);
     }
 
-    // -------- clear() --------
+    // ========================
+    // clear()
+    // ========================
 
     @Test
-    @DisplayName("clear: zera numElements mas mantém a capacidade")
-    void clear_zeraTamanho_mantemCapacidade() {
+    @DisplayName("clear — lista com elementos — tamanho zero e capacidade preservada")
+    void clear_listaComElementos_tamanhoZeroECapacidadePreservada() {
         var lista = new ListaTexto();
         var arr = newArray(8);
-        arr[0]="A"; arr[1]="B";
+        arr[0] = "A"; arr[1] = "B";
         preload(lista, arr, 2);
 
-        int capAntes = elements(lista).length;
         lista.clear();
+
         assertEquals(0, numElements(lista));
-        assertEquals(capAntes, elements(lista).length);
+        assertEquals(8, elements(lista).length);
     }
 
     @Test
-    @DisplayName("clear: após limpar, próximos adds devem reutilizar o array existente")
-    void clear_permiteReusoArray() {
+    @DisplayName("clear — lista com elementos — nenhum elemento acessível após a operação")
+    void clear_listaComElementos_nenhumElementoAcessivel() {
         var lista = new ListaTexto();
         var arr = newArray(4);
-        arr[0]="A"; arr[1]="B"; arr[2]="C";
+        arr[0] = "A"; arr[1] = "B"; arr[2] = "C";
         preload(lista, arr, 3);
 
-        int capAntes = elements(lista).length;
         lista.clear();
-        assertTrue(lista.add("X"));
-        assertEquals(capAntes, elements(lista).length, "Capacidade não deve mudar após primeiro add pós-clear");
-        assertEquals(1, numElements(lista));
-        assertEquals("X", elements(lista)[0]);
+
+        String[] interno = elements(lista);
+        assertNull(interno[0]);
+        assertNull(interno[1]);
+        assertNull(interno[2]);
     }
 
     @Test
-    @DisplayName("clear: idempotente (limpar lista já vazia mantém estado)")
-    void clear_idempotente() {
+    @DisplayName("clear — lista já vazia — estado permanece inalterado")
+    void clear_listaJaVazia_estadoPermanecInalterado() {
         var lista = new ListaTexto();
         preload(lista, newArray(4), 0);
 
         lista.clear();
+
         assertEquals(0, numElements(lista));
         assertEquals(4, elements(lista).length);
     }
